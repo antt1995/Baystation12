@@ -36,7 +36,7 @@
 
 #define isairlock(A) istype(A, /obj/machinery/door/airlock)
 
-#define isatom(A) (isloc(A) && !isarea(A))
+#define istom(A) (isloc(A) && !isarea(A))
 
 #define isprojectile(A) istype(A, /obj/item/projectile)
 
@@ -157,7 +157,7 @@
 
 #define QDEL_NULL(x) if(x) { qdel(x) ; x = null }
 
-#define QDEL_IN(item, time) addtimer(new Callback(item, /datum/proc/qdel_self), time, TIMER_STOPPABLE)
+#define QDEL_IN(item, time) addtimer(new Callback(item, TYPE_PROC_REF(/datum, qdel_self)), time, TIMER_STOPPABLE)
 
 #define DROP_NULL(x) if(x) { x.dropInto(loc); x = null; }
 

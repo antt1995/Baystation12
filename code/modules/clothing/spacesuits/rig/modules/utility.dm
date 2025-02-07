@@ -48,6 +48,11 @@
 	use_power_cost = 0//Already handled by defib, but it's 150 Wh, normal defib takes 100
 	device = /obj/item/shockpaddles/rig
 
+/obj/item/rig_module/device/defib/Initialize()
+	. = ..()
+	var/obj/item/shockpaddles/rig/paddles = device
+	paddles.module = src
+
 /obj/item/rig_module/device/drill
 	name = "hardsuit mounted drill"
 	desc = "A very heavy diamond-tipped drill."
@@ -519,7 +524,7 @@
 
 /obj/item/rig_module/kinetic_module/proc/beamdestroyed()
 	if(beam)
-		GLOB.destroyed_event.unregister(beam, src, .proc/beamdestroyed)
+		GLOB.destroyed_event.unregister(beam, src, PROC_REF(beamdestroyed))
 		beam = null
 	if(locked)
 		if(holder.wearer)
@@ -549,7 +554,7 @@
 				return
 			locked = AM
 			beam = holder.wearer.Beam(BeamTarget = target, icon_state = "r_beam", maxdistance = max_dist, beam_type = /obj/ebeam/warp)
-			GLOB.destroyed_event.register(beam, src, .proc/beamdestroyed)
+			GLOB.destroyed_event.register(beam, src, PROC_REF(beamdestroyed))
 
 			animate(target,pixel_y= initial(target.pixel_y) - 2,time=1 SECOND, easing = SINE_EASING, flags = ANIMATION_PARALLEL, loop = -1)
 			animate(pixel_y= initial(target.pixel_y) + 2,time=1 SECOND)

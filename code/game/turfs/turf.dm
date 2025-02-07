@@ -55,8 +55,8 @@
 	if (light_power && light_range)
 		update_light()
 
-	if (!mapload || (!istype(src, /turf/space) && is_outside()))
-		SSambient_lighting.queued += src
+	if (is_outside())
+		AMBIENT_LIGHT_QUEUE_TURF(src)
 
 	if (opacity)
 		has_opaque_atom = TRUE
@@ -83,6 +83,8 @@
 		crash_with("Improper turf qdel. Do not qdel turfs directly.")
 
 	changing_turf = FALSE
+
+	AMBIENT_LIGHT_DEQUEUE_TURF(src)
 
 	remove_cleanables(FALSE)
 	fluid_update()
@@ -304,7 +306,7 @@ var/global/const/enterloopsanity = 100
 
 			if(M.pinned)
 				return
-		addtimer(new Callback(src, /turf/proc/bounce_off, AM, TT.init_dir), 2)
+		addtimer(new Callback(src, PROC_REF(bounce_off), AM, TT.init_dir), 2)
 
 	..()
 
