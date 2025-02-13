@@ -160,14 +160,14 @@ patches
 	name = "\improper Torch mission patch"
 	desc = "A fire resistant shoulder patch, worn by the personnel involved in the Torch Project."
 	icon_state = "torchpatch"
-	on_rolled_down = "blank"
+	on_rolled_down = ACCESSORY_ROLLED_NONE
 	slot = ACCESSORY_SLOT_INSIGNIA
 
 /obj/item/clothing/accessory/solgov/ec_patch
 	name = "\improper Observatory patch"
 	desc = "A laminated shoulder patch, carrying the symbol of the Sol Central Government Expeditionary Corpss Observatory, or SCGEO for short, the eyes and ears of the Expeditionary Corps' missions."
 	icon_state = "ecpatch1"
-	on_rolled_down = "blank"
+	on_rolled_down = ACCESSORY_ROLLED_NONE
 	slot = ACCESSORY_SLOT_INSIGNIA
 	check_codex_val = FACTION_EXPEDITIONARY
 
@@ -180,7 +180,7 @@ patches
 	name = "\improper Cultural Exchange patch"
 	desc = "A radiation-shielded shoulder patch, denoting service in the the Sol Central Government Expeditionary Corps Cultural Exchange program."
 	icon_state = "ecpatch3"
-	on_rolled_down = "blank"
+	on_rolled_down = ACCESSORY_ROLLED_NONE
 	slot = ACCESSORY_SLOT_INSIGNIA
 	check_codex_val = FACTION_EXPEDITIONARY
 
@@ -188,7 +188,7 @@ patches
 	name = "\improper First Fleet patch"
 	desc = "A fancy shoulder patch carrying insignia of First Fleet, the Sol Guard, stationed in Sol."
 	icon_state = "fleetpatch1"
-	on_rolled_down = "blank"
+	on_rolled_down = ACCESSORY_ROLLED_NONE
 	slot = ACCESSORY_SLOT_INSIGNIA
 
 /obj/item/clothing/accessory/solgov/fleet_patch/second
@@ -223,7 +223,7 @@ scarves
 		SPECIES_UNATHI = 'icons/mob/species/unathi/onmob_accessories_unathi.dmi'
 		)
 	icon_state = "whitescarf"
-	on_rolled_down = "blank"
+	on_rolled_down = ACCESSORY_ROLLED_NONE
 	color = "#68a0ce"
 	check_codex_val = FACTION_EXPEDITIONARY
 
@@ -241,13 +241,13 @@ scarves
 ribbons
 ******/
 /obj/item/clothing/accessory/ribbon
-	on_rolled_down = "blank"
+	on_rolled_down = ACCESSORY_ROLLED_NONE
 
 /obj/item/clothing/accessory/ribbon/solgov
 	name = "ribbon"
 	desc = "A simple military decoration."
 	icon_state = "ribbon_marksman"
-	on_rolled_down = "blank"
+	on_rolled_down = ACCESSORY_ROLLED_NONE
 	slot = ACCESSORY_SLOT_MEDAL
 	icon = 'maps/torch/icons/obj/obj_accessories_solgov.dmi'
 	accessory_icons = list(slot_w_uniform_str = 'maps/torch/icons/mob/onmob_accessories_solgov.dmi', slot_wear_suit_str = 'maps/torch/icons/mob/onmob_accessories_solgov.dmi')
@@ -355,7 +355,7 @@ specialty pins
 	icon_state = "marinerank_command"
 	slot = ACCESSORY_SLOT_INSIGNIA
 	icon_state = "fleetspec"
-	on_rolled_down = "blank"
+	on_rolled_down = ACCESSORY_ROLLED_NONE
 
 /obj/item/clothing/accessory/solgov/specialty/janitor
 	name = "custodial blazes"
@@ -661,7 +661,7 @@ ranks - ec
 	name = "ranks"
 	desc = "Insignia denoting rank of some kind. These appear blank."
 	icon_state = "fleetrank"
-	on_rolled_down = "blank"
+	on_rolled_down = ACCESSORY_ROLLED_NONE
 	slot = ACCESSORY_SLOT_RANK
 	gender = PLURAL
 	accessory_flags = ACCESSORY_REMOVABLE | ACCESSORY_HIGH_VISIBILITY
