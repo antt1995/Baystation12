@@ -501,3 +501,8 @@
 ///Flags assigned to carbon mobs trait_flags when they're actively having an allergy.
 #define MILD_ALLERGY FLAG_01
 #define SEVERE_ALLERGY FLAG_02
+
+// Runechat levels
+#define RUNECHAT_DEFAULT 0
+#define RUNECHAT_SMALL 1
+#define RUNECHAT_LARGE 2

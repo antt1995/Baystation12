@@ -119,6 +119,12 @@ var/global/list/channel_to_radio_key = new
 /mob/living/proc/get_default_language()
 	return default_language
 
+/// Returns the current default lanauge *if* it's audible (excludes SIGNLANG, NONVERBAL, HIVEMIND)
+/mob/living/proc/get_audible_default_language()
+	if (!default_language || default_language.flags & (NONVERBAL | SIGNLANG | HIVEMIND))
+		return null
+	return default_language
+
 /mob/proc/is_muzzled()
 	return istype(wear_mask, /obj/item/clothing/mask/muzzle)
 
