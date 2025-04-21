@@ -123,7 +123,7 @@
 
 	if (href_list["ejectp"])
 		if(loaded_pill_bottle)
-			loaded_pill_bottle.dropInto(loc)
+			user.put_in_hands(loaded_pill_bottle)
 			loaded_pill_bottle = null
 
 	if(beaker)
@@ -262,8 +262,31 @@
 			pillsprite = href_list["pill_sprite"]
 		else if(href_list["bottle_sprite"])
 			bottlesprite = href_list["bottle_sprite"]
-
+		else if (href_list["dissolve_pill"])
+			dissolve_pill_from_bottle_into_buffer()
+		else if (href_list["dissolve_until_full"])
+			dissolve_pill_from_bottle_into_buffer_until_full()
 	return TOPIC_REFRESH
+
+/obj/machinery/chem_master/proc/dissolve_pill_from_bottle_into_buffer()
+	if (!loaded_pill_bottle)
+		return
+	if (reagents.get_free_space() <= 0)
+		return
+	var/obj/item/reagent_containers/pill/pill = loaded_pill_bottle.remove_random_pill()
+	if (!pill)
+		return
+	pill.reagents.trans_to(src, pill.reagents.total_volume)
+	qdel(pill)
+
+/obj/machinery/chem_master/proc/dissolve_pill_from_bottle_into_buffer_until_full()
+	if (!loaded_pill_bottle)
+		return
+	var/safety = 0
+	while (reagents.total_volume <= reagents.maximum_volume && length(loaded_pill_bottle.contents))
+		dissolve_pill_from_bottle_into_buffer()
+		if (++safety >= loaded_pill_bottle.max_storage_space)
+			return
 
 /obj/machinery/chem_master/proc/fetch_contaminants(mob/user, datum/reagents/reagents, datum/reagent/main_reagent)
 	. = list()
@@ -316,9 +339,14 @@
 		data["analyzedData"] = get_chem_info(analyzed_reagent)
 
 	data["loadedContainer"] = beaker
+	data["bufferBlurb"] = "Buffer reagents: [reagents.total_volume] / [reagents.maximum_volume]"
+	if (beaker)
+		data["containerBlurb"] = "Container reagents: [beaker.reagents.total_volume] / [beaker.reagents.maximum_volume]"
+	data["bufferFreeSpace"] = reagents.get_free_space()
 
 	if (loaded_pill_bottle)
 		data["loadedPillBottle"] = loaded_pill_bottle
+		data["loadedPillCount"] = length(loaded_pill_bottle.contents)
 		data["pillBottleBlurb"] = "Eject Pill Bottle \[[length(loaded_pill_bottle.contents)]/[loaded_pill_bottle.max_storage_space]\]"
 
 	data["isSloppy"] = sloppy
