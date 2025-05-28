@@ -1,5 +1,0 @@
-author: Banditoz
-changes:
-  - {tweak: Megaphones now use your current default audible language.}
-  - {rscadd: Megaphones now produce floating text when used.}
-delete-after: true
