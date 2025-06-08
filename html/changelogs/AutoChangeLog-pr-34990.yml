@@ -1,0 +1,4 @@
+author: SierraKomodo
+changes:
+  - {tweak: Construction and deconstruction steps for windows now have timers.}
+delete-after: true
