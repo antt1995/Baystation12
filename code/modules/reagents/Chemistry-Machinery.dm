@@ -91,6 +91,7 @@
 		if(!user.unEquip(B, src))
 			return TRUE
 		loaded_pill_bottle = B
+		loaded_pill_bottle.close_all()
 		to_chat(user, SPAN_NOTICE("You add \the [B] into \the [src]'s dispenser slot!"))
 		update_icon()
 		return TRUE
@@ -282,11 +283,15 @@
 /obj/machinery/chem_master/proc/dissolve_pill_from_bottle_into_buffer_until_full()
 	if (!loaded_pill_bottle)
 		return
-	var/safety = 0
-	while (reagents.total_volume <= reagents.maximum_volume && length(loaded_pill_bottle.contents))
-		dissolve_pill_from_bottle_into_buffer()
-		if (++safety >= loaded_pill_bottle.max_storage_space)
-			return
+	if (reagents.get_free_space() <= 0)
+		return
+	var/list/pills = filter_list(loaded_pill_bottle.contents, /obj/item/reagent_containers/pill)
+	for (var/obj/item/reagent_containers/pill/pill as anything in shuffle(pills, TRUE))
+		if (reagents.get_free_space() <= 0)
+			break
+		pill.reagents.trans_to(src, pill.reagents.total_volume)
+		qdel(pill)
+
 
 /obj/machinery/chem_master/proc/fetch_contaminants(mob/user, datum/reagents/reagents, datum/reagent/main_reagent)
 	. = list()
