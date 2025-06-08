@@ -1,0 +1,4 @@
+author: LordNest
+changes:
+  - {bugfix: Vox hull now painted in their signature colour once again}
+delete-after: true
