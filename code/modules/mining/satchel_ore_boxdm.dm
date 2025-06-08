@@ -1,60 +1,3 @@
-
-/**********************Ore box**************************/
-/obj/item/flatpack
-	var/deploy_path = null
-	var/deploy_time = 2 SECONDS
-	var/deploy_sound = 'sound/items/Deconstruct.ogg'
-	w_class = ITEM_SIZE_NORMAL
-
-/obj/item/flatpack/ore_box
-	name = "packed ore box"
-	w_class = ITEM_SIZE_NORMAL
-	icon = 'icons/obj/ore_boxes.dmi'
-	icon_state = "orebox2stored"
-	deploy_path = /obj/structure/ore_box/flatpacked
-	matter = list(MATERIAL_STEEL = 15000)
-
-/obj/item/flatpack/use_after(atom/target, mob/living/user, click_parameters)
-	if(!deploy_path)
-		return
-	if (loc != user)
-		return
-	var/turf/T = get_turf(target)
-	if (!user.TurfAdjacent(T))
-		return
-	if (isspaceturf(T) || isopenspace(T))
-		to_chat(user, SPAN_WARNING("You cannot use \the [src] in open space."))
-		return TRUE
-	var/obstruction = T.get_obstruction()
-	if (obstruction)
-		to_chat(user, SPAN_WARNING("\The [english_list(obstruction)] is blocking that spot."))
-		return TRUE
-	user.visible_message(
-		SPAN_ITALIC("\The [user] starts assembling \an [src]."),
-		SPAN_ITALIC("You start assembling \the [src]."),
-		SPAN_ITALIC("You can hear rustling of planks and sheets."),
-		range = 5
-	)
-	if (!do_after(user, deploy_time, target, DO_PUBLIC_UNIQUE) || QDELETED(src))
-		return TRUE
-	obstruction = T.get_obstruction()
-	if (obstruction)
-		to_chat(user, SPAN_WARNING("\The [english_list(obstruction)] is blocking that spot."))
-		return TRUE
-	user.visible_message(
-		SPAN_ITALIC("\The [user] finishes assembling \an [src]."),
-		SPAN_NOTICE("You assemble \the [src]."),
-		range = 5
-	)
-	playsound(src, deploy_sound, 50, TRUE)
-	var/obj/R = new deploy_path(T)
-	transfer_fingerprints_to(R)
-	R.add_fingerprint(user)
-	copy_health(src, R)
-	qdel(src)
-	return TRUE
-
-
 /obj/structure/ore_box
 	icon = 'icons/obj/ore_boxes.dmi'
 	icon_state = "orebox0"
@@ -64,9 +7,6 @@
 	var/last_update = 0
 	var/list/stored_ore = list()
 
-
-/obj/structure/ore_box/flatpacked
-	icon_state = "orebox2"
 
 /obj/structure/ore_box/use_tool(obj/item/tool, mob/user, list/click_params)
 	// Ore - Insert ore
@@ -167,3 +107,16 @@
 			O.dropInto(loc)
 			O.ex_act(severity++)
 		qdel(src)
+
+
+/obj/structure/ore_box/flatpack
+	icon_state = "orebox2"
+
+
+/obj/item/flatpack/ore_box
+	name = "packed ore box"
+	w_class = ITEM_SIZE_NORMAL
+	icon = 'icons/obj/ore_boxes.dmi'
+	icon_state = "orebox2stored"
+	deploy_path = /obj/structure/ore_box/flatpack
+	matter = list(MATERIAL_STEEL = 15000)
