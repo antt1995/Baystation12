@@ -1,3 +1,20 @@
+/datum/gear/award/solgov_award_civilian
+	display_name = "SolGov civilian award, Expeditionary"
+	description = "An iron medal awarded by the SCG for individuals who have participated in missions outside the borders of the Sol Central Government."
+	path = /obj/item/storage/medalbox/sol/expeditionary
+	cost = 3
+	flags = GEAR_HAS_NO_CUSTOMIZATION | GEAR_HAS_EXTENDED_DESCRIPTION
+
+/datum/gear/award/solgov_award_civilian/sapientarian
+	display_name = "SolGov civilian award, Sapientarian Peace Award"
+	description = "A copper medal awarded by the SCG for individuals who have contributed substantially to sapient rights or fostered greater brotherhood between sapient species. It is embossed with a date, text, and an image of famous Expeditionary Corps sapientarian, Samuel Carr."
+	path = /obj/item/storage/medalbox/sol/sapientarian
+
+/datum/gear/award/solgov_award_civilian/service
+	display_name = "SolGov civilian award, Distinguished Service Medal"
+	description = "A golden sun medal awarded by the SCG to nonmilitary individuals who have made exceptional contributions to the Sol Central Government."
+	path = /obj/item/storage/medalbox/sol/service
+
 /datum/gear/award/solgov_award_military
 	display_name = "SolGov military award, Bronze Heart"
 	description = "A bronze heart awarded by the SCG for members of the SCG Defense Forces who suffer injury or death in a combat zone."
@@ -40,23 +57,6 @@
 	display_name = "SolGov military award, Medal of Honor"
 	description = "An ornate golden medal awarded and conferred by the SCG Secretary-General to members of the SCG Defense Forces who have committed acts of 'conspicuous gallantry beyond the call of duty.'"
 	path = /obj/item/storage/medalbox/sol/medal_of_honor
-
-/datum/gear/award/solgov_award_civilian
-	display_name = "SolGov civilian award, Expeditionary"
-	description = "An iron medal awarded by the SCG for individuals who have participated in missions outside the borders of the Sol Central Government."
-	path = /obj/item/storage/medalbox/sol/expeditionary
-	cost = 3
-	flags = GEAR_HAS_NO_CUSTOMIZATION | GEAR_HAS_EXTENDED_DESCRIPTION
-
-/datum/gear/award/solgov_award_civilian/sapientarian
-	display_name = "SolGov civilian award, Sapientarian Peace Award"
-	description = "A copper medal awarded by the SCG for individuals who have contributed substantially to sapient rights or fostered greater brotherhood between sapient species. It is embossed with a date, text, and an image of famous Expeditionary Corps sapientarian, Samuel Carr."
-	path = /obj/item/storage/medalbox/sol/sapientarian
-
-/datum/gear/award/solgov_award_civilian/service
-	display_name = "SolGov civilian award, Distinguished Service Medal"
-	description = "A golden sun medal awarded by the SCG to nonmilitary individuals who have made exceptional contributions to the Sol Central Government."
-	path = /obj/item/storage/medalbox/sol/service
 
 /datum/gear/award/solgov_award_ribbons
 	display_name = "SolGov ribbon, Marksmanship"
