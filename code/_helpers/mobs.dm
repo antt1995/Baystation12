@@ -302,6 +302,14 @@
 	return FALSE
 
 
+/client/verb/cancel_current_action()
+	set name = "Cancel Current Action"
+	set category = "Object"
+	if (!mob)
+		return
+	mob.do_user_interrupted = world.time
+
+
 /proc/able_mobs_in_oview(origin)
 	RETURN_TYPE(/list)
 	var/list/mobs = list()
