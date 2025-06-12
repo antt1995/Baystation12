@@ -1,6 +1,0 @@
-author: SierraKomodo
-changes:
-  - {rscadd: 'You can now cancel your own timed actions by pressing ESCAPE. No more
-      needing to do the "Wrong tool shuffle" in the OR. (This probably still has a
-      chance of doing the extra fail state stuff though, be warned)'}
-delete-after: true
