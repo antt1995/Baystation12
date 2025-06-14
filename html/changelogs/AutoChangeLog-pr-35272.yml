@@ -1,0 +1,6 @@
+author: Cakey
+changes:
+  - {rscadd: 'Awards are now classed under their own loadout category, and have been
+      split up into individual awards to allow the selection of multiple awards from
+      their respective categories.'}
+delete-after: true
