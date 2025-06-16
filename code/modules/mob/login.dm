@@ -1,20 +1,18 @@
-//handles setting lastKnownIP and computer_id for use by the ban systems as well as checking for multikeying
-/mob/proc/update_Login_details()
-	//Multikey checks and logging
-	lastKnownIP	= client.address
-	computer_id	= client.computer_id
+/mob/proc/update_login_details()
+	last_address = client.address
+	last_cid = client.computer_id
 	last_ckey = ckey
 	if(config.log_access)
-		log_access("Login: [key_name(src)] from [lastKnownIP ? lastKnownIP : "localhost"]-[computer_id] || BYOND v[client.byond_version]")
+		log_access("Login: [key_name(src)] from [last_address ? last_address : "localhost"]-[last_cid] || BYOND v[client.byond_version]")
 		var/is_multikeying = 0
 		if (config.warn_if_staff_same_ip || !check_rights(R_MOD, FALSE, client))
 			for(var/mob/M in GLOB.player_list)
 				if(M == src)	continue
 				if( M.key && (M.key != key) )
 					var/matches
-					if( (M.lastKnownIP == client.address) )
+					if( (M.last_address == client.address) )
 						matches += "IP ([client.address])"
-					if( (client.connection != "web") && (M.computer_id == client.computer_id) )
+					if( (client.connection != "web") && (M.last_cid == client.computer_id) )
 						if(matches)	matches += " and "
 						matches += "ID ([client.computer_id])"
 						is_multikeying = 1
@@ -65,7 +63,7 @@
 	if (!GLOB.player_list.Find(src))
 		ADD_SORTED(GLOB.player_list, src, GLOBAL_PROC_REF(cmp_mob_key))
 
-	update_Login_details()
+	update_login_details()
 	world.update_status()
 
 	maybe_send_staffwarns("joined the round")
