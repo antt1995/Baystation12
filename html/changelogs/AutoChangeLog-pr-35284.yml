@@ -1,0 +1,5 @@
+author: Remission, LordNest
+changes:
+  - {imageadd: Medibots resprited to match current 3/4 medkits}
+  - {imageadd: Cleanbots and Farmbots now have 3/4 perspective crafting states}
+delete-after: true
