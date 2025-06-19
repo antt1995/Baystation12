@@ -1,0 +1,4 @@
+author: thekekman666
+changes:
+  - {bugfix: Bullets no longer disappear when missing.}
+delete-after: true
