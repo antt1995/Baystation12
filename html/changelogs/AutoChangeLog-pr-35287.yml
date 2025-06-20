@@ -1,0 +1,5 @@
+author: thekekman666
+changes:
+  - {bugfix: fixed the impossibility of selecting the southwest direction in the
+      OFD console}
+delete-after: true
