@@ -1,5 +1,0 @@
-author: Mucker
-changes:
-  - {tweak: Changed the key to cancel your current interaction to ALT+X. Escape 
-      now clears the hotbar input again.}
-delete-after: true
