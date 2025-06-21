@@ -1,0 +1,21 @@
+author: Cakey
+changes:
+  - {rscadd: Ports cooking appliances from Aurora. Toggle them on via 
+      ctrl-click. Open ovens via alt-click. Click on them to add and remove 
+      cooking implements and ingredients.}
+  - {rscadd: 'Added cooking implements, to be used with cooking appliances. Click
+      on them with ingredients to prepare recipes, similar to how you would have done
+      with a microwave.'}
+  - {rscadd: Cooking now has to be done at different cooking appliances 
+      depending on the recipe.}
+  - {rscadd: Food can be batch cooked depending on recipe if multiples of the 
+      ingredients are added to appliances when cooking.}
+  - {tweak: Microwaves have been turned into an appliance type.}
+  - {tweak: Cooking containers (formerly trays) can now click on specific items 
+      to scoop them up.}
+  - {tweak: Cooking containers (formerly trays) can now scoop up reagents from 
+      reagent containers directly.}
+  - {tweak: 'Most recipes using eggs now require egg yolk instead. You now have to
+      decide to place or crack eggs into containers using help intent to place, and
+      any other intent to crack.'}
+delete-after: true
