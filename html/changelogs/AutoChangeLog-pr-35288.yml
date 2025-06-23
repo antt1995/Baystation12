@@ -1,5 +1,0 @@
-author: LordNest
-changes:
-  - {bugfix: fixed trauma and antirad medbot skins mask. Also fixed presence of 
-      error mask on basic medbot.}
-delete-after: true
