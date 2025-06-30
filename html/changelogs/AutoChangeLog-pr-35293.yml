@@ -1,4 +1,0 @@
-author: thekekman666
-changes:
-  - {bugfix: Fixed encryption key addition into robot radio}
-delete-after: true
