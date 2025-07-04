@@ -1,4 +1,0 @@
-author: Zenithstar
-changes:
-  - {bugfix: Holsters and sheaths selected from the loadout retain custom names}
-delete-after: true
